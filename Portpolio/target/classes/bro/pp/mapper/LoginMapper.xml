@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="bro.pp.mapper.LoginMapper">
+  	
+<insert id="signUp">
+	INSERT into sample.portfolio_member
+	values (#{id1}, #{password1}, #{name1}, #{birth1}, #{gender1}, #{email1}, #{phone1});
+</insert>
+ 
+<select id="logIn" resultType="bro.pp.model.LoginVO">
+	SELECT id1, password1
+	from sample.portfolio_member  
+	WHERE id1=#{id1} and password1=#{password1};
+</select> 
+ 
+  </mapper>

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+label{
+	display: inline-block;
+	width: 200px;
+	margin: 10px 0;
+}
+
+form span{
+	color: red;
+	font-size: 12px;
+}
