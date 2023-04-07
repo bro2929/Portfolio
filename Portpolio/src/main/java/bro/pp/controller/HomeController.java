@@ -46,13 +46,28 @@ public class HomeController {
 		return "elements";
 	}
 	
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	@RequestMapping(value = "/SignInUp", method = RequestMethod.GET)
 	public String signUp1() {
-		return "signUp";
+		return "signInUp";
+	}
+
+/*	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
+	public String list() {
+		return "board/list";
+	}*/
+	
+/*	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
+	public String boardDetail() {
+		return "board/detail";
+	}*/
+	
+	@RequestMapping(value = "/board/write", method = RequestMethod.GET)
+	public String boardWrite() {
+		return "board/write";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login1() {
-		return "logIn";
+	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
+	public String boardEdit() {
+		return "board/edit";
 	}
 }

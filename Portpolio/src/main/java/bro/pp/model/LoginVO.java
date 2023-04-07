@@ -2,56 +2,56 @@ package bro.pp.model;
 
 public class LoginVO {
 	
-	private String id1;
-	private String password1;
-	private String name1;
-	private String birth1;
-	private String gender1;
-	private String email1;
-	private String phone1;
+	private String mem_ID;
+	private String mem_PASSWORD;
+	private String mem_NAME;
+	private String mem_BIRTH;
+	private String mem_GENDER;
+	private String mem_EMAIL;
+	private String mem_PHONE;
 	
 	
-	public String getId1() {
-		return id1;
+	public String getmem_ID() {
+		return mem_ID;
 	}
-	public void setId1(String id1) {
-		this.id1 = id1;
+	public void setmem_ID(String mem_ID) {
+		this.mem_ID = mem_ID;
 	}
-	public String getPassword1() {
-		return password1;
+	public String getmem_PASSWORD() {
+		return mem_PASSWORD;
 	}
-	public void setPassword1(String password1) {
-		this.password1 = password1;
+	public void setmem_PASSWORD(String mem_PASSWORD) {
+		this.mem_PASSWORD = mem_PASSWORD;
 	}
-	public String getName1() {
-		return name1;
+	public String getmem_NAME() {
+		return mem_NAME;
 	}
-	public void setName1(String name1) {
-		this.name1 = name1;
+	public void setmem_NAME(String mem_NAME) {
+		this.mem_NAME = mem_NAME;
 	}
-	public String getBirth1() {
-		return birth1;
+	public String getmem_BIRTH() {
+		return mem_BIRTH;
 	}
-	public void setBirth1(String birth1) {
-		this.birth1 = birth1;
+	public void setmem_BIRTH(String mem_BIRTH) {
+		this.mem_BIRTH = mem_BIRTH;
 	}
-	public String getGender1() {
-		return gender1;
+	public String getmem_GENDER() {
+		return mem_GENDER;
 	}
-	public void setGender1(String gender1) {
-		this.gender1 = gender1;
+	public void setmem_GENDER(String mem_GENDER) {
+		this.mem_GENDER = mem_GENDER;
 	}
-	public String getEmail1() {
-		return email1;
+	public String getmem_EMAIL() {
+		return mem_EMAIL;
 	}
-	public void setEmail1(String email1) {
-		this.email1 = email1;
+	public void setmem_EMAIL(String mem_EMAIL) {
+		this.mem_EMAIL = mem_EMAIL;
 	}
-	public String getPhone1() {
-		return phone1;
+	public String getmem_PHONE() {
+		return mem_PHONE;
 	}
-	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
+	public void setmem_PHONE(String mem_PHONE) {
+		this.mem_PHONE = mem_PHONE;
 	}
 
 	
@@ -59,8 +59,8 @@ public class LoginVO {
 	// object 클래스의 toString() 메서드를 재정의
 	@Override
 	public String toString() {
-		return "LoginVO [id=" + id1 + ", password=" + password1 + ", name=" + name1 + ", phone=" + phone1 + ", email="
-				+ email1 + ", name=" + name1 + ", gender=" + gender1 + ", birth=" + birth1 + "]";
+		return "LoginVO [id=" + mem_ID + ", password=" + mem_PASSWORD + ", name=" + mem_NAME + ", phone=" + mem_PHONE + ", email="
+				+ mem_EMAIL + ", name=" + mem_NAME + ", gender=" + mem_GENDER + ", birth=" + mem_BIRTH + "]";
 	}
 	
 	

@@ -33,8 +33,8 @@
 											<li><a href="/">Home</a></li>
 											<li><a href="/1">Generic</a></li>
 											<li><a href="/2">Elements</a></li>
-											<li><a href="/signup">Sign Up</a></li>
-											<li><a href="/login">Log In</a></li>
+											<li><a href="/SignInUp">Sign In/Up</a></li>
+											<li><a href="/board/list">게시판</a></li>
 										</ul>
 									</div>
 								</li>

@@ -31,7 +31,7 @@ public class MemberController {
 			System.out.println(member);// 어떤 값을 받았는지 콘솔에서 확인
 			System.out.println(ls.logIn(member));// 로그인할때 입력한 정보가 null값인지 콘솔에서 확인
 			if(ls.logIn(member) == null) {
-				return "logIn";
+				return "signInUp";
 			}
 			else {
 				session.setAttribute("login", ls.logIn(member));				

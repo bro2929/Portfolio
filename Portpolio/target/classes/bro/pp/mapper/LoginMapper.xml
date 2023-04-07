@@ -4,17 +4,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="bro.pp.mapper.LoginMapper">
+<mapper namespace="bro.pp.mapper.LoginMapper">
   	
-<insert id="signUp">
-	INSERT into sample.portfolio_member
-	values (#{id1}, #{password1}, #{name1}, #{birth1}, #{gender1}, #{email1}, #{phone1});
-</insert>
+	<insert id="signUp">
+		INSERT into sample.portfolio_member
+		values (#{mem_ID}, #{mem_PASSWORD}, #{mem_NAME}, #{mem_BIRTH}, #{mem_GENDER}, #{mem_EMAIL}, #{mem_PHONE});
+	</insert>
+	 
+	<select id="logIn" resultType="bro.pp.model.LoginVO">
+		SELECT mem_ID, mem_PASSWORD
+		from sample.portfolio_member  
+		WHERE mem_ID=#{mem_ID} and mem_PASSWORD=#{mem_PASSWORD};
+	</select> 
  
-<select id="logIn" resultType="bro.pp.model.LoginVO">
-	SELECT id1, password1
-	from sample.portfolio_member  
-	WHERE id1=#{id1} and password1=#{password1};
-</select> 
- 
-  </mapper>
+</mapper>
