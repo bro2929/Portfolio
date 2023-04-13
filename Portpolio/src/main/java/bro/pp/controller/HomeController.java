@@ -66,8 +66,8 @@ public class HomeController {
 		return "board/write";
 	}
 	
-	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
 	public String boardEdit() {
 		return "board/edit";
-	}
+	}*/
 }

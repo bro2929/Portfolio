@@ -12,61 +12,78 @@
 	</insert>
 
 	<select id="boardList" resultType="bro.pp.model.BoardVO">
-		SELECT bod_NO, bod_TITLE, bod_ID, bod_REGDATE, bod_CNT, bod_REPLY 
-		FROM portfolio_board;
+<!-- 	SELECT bod_NO, bod_TITLE, bod_ID, bod_REGDATE, bod_CNT, bod_REPLY 
+		FROM portfolio_board
+		ORDER BY bod_NO desc; -->
+ 		SELECT *
+		FROM(
+			select @rownum:=@rownum+1 rownum, b.*
+			from portfolio_board b, (select @rownum:=0) as tmp
+			<if test="keyword != null">
+				<choose>
+					<when test="type=='T'.toString()">
+						where bod_TITLE like concat('%',#{keyword},'%')
+					</when>
+					<when test="type=='C'.toString()">
+						where bod_CONTENT like concat('%',#{keyword},'%')
+					</when>
+					<otherwise>
+						where bod_TITLE like concat('%',#{keyword},'%')
+						OR  bod_CONTENT like concat('%',#{keyword},'%')
+					</otherwise>
+				</choose>
+		    </if>
+		    ORDER BY bod_NO desc
+		) AS boardlist
+		<![CDATA[
+		where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+		]]>		
 	</select>
+	
+	<select id="total" resultType="int">
+		SELECT count(*) FROM portfolio_board
+		<if test="keyword != null">	
+			<choose>
+				<when test="type=='T'.toString()">
+					where bod_TITLE like concat('%',#{keyword},'%')
+				</when>
+				<when test="type=='C'.toString()">
+					where bod_CONTENT like concat('%',#{keyword},'%')
+				</when>
+				<otherwise>
+					where bod_TITLE like concat('%',#{keyword},'%')
+					OR  bod_CONTENT like concat('%',#{keyword},'%')
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+				
 	<select id="boardDetail" resultType="bro.pp.model.BoardVO">
 		SELECT * 
 		FROM portfolio_board
 		WHERE bod_NO=#{bod_NO};
 	</select>
+	<update id="cntUp">
+		UPDATE portfolio_board
+		SET bod_CNT = bod_CNT+1
+		WHERE bod_NO=#{bod_NO};
+	</update>	
 	
+	<select id="boardEdit1" resultType="bro.pp.model.BoardVO">
+		SELECT bod_NO, bod_TITLE, bod_CONTENT
+		FROM portfolio_board
+		WHERE bod_NO=#{bod_NO};
+	</select>
+	
+	<update id="boardEdit2">
+		UPDATE portfolio_board
+		SET bod_TITLE=#{bod_TITLE}, bod_CONTENT=#{bod_CONTENT}
+		WHERE bod_NO=#{bod_NO};
+	</update>
+	
+	<delete id="boardDelete">
+		DELETE from portfolio_board 
+		WHERE bod_NO=#{bod_NO};
+	</delete>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
- 		SELECT *
-		FROM(
-			SELECT @rownum:=@rownum+1 rownum, b.*
-			FROM portfolio_board b, (select @rownum:=0) as tmp
-				<if test="keyword != null">
-					<choose>
-						<when test="type=='T'.toString()">
-							 where title like concat('%',#{keyword},'%')
-						</when>
-						<when test="type=='C'.toString()">
-							where content like concat('%',#{keyword},'%')
-						</when>
-						<otherwise>
-							where title like concat('%',#{keyword},'%')
-					      	OR content like concat('%',#{keyword},'%')
-						</otherwise>
-					</choose>
-			    </if>
-			    order by bod_NO desc
-			) as boardlist
-		<![CDATA[where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}]]>		
-	</select> --> 
 </mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bro.pp.mapper.ReplyMapper">
+
+	<insert id="rewrite">
+		INSERT into portfolio_reply(rep_CONTENT,mem_ID,bod_NO)
+		VALUES(#{rep_CONTENT},#{mem_ID},#{bod_NO});
+	</insert>
+	
+	<select id="list" resultType="bro.pp.model.ReplyVO">
+		SELECT *
+		FROM(
+			select @rownum:=@rownum+1 rownum, b.*
+			from portfolio_reply b, (select @rownum:=0) as tmp
+		    where bod_NO=#{bod_NO}
+			order by bod_NO desc
+		) AS boardlist
+		<![CDATA[
+		where rownum > (#{cri.pageNum}-1)*#{cri.amount} and rownum <= #{cri.pageNum}*#{cri.amount}
+		]]>
+	</select>
+	<select id="rpycnt" resultType="int">
+		SELECT count(*) FROM portfolio_reply WHERE bod_NO=#{bod_NO};
+	</select>
+	<update id="modify">
+		UPDATE portfolio_reply
+		SET rep_CONTENT = #{rep_CONTENT}
+		WHERE rep_NO = #{rep_NO};
+	</update>
+	
+	<delete id="remove">
+		DELETE FROM portfolio_reply
+		WHERE rep_NO=#{rep_NO};
+	</delete>
+	
+</mapper>

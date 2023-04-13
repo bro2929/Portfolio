@@ -8,9 +8,9 @@ public class CriteriaVO {
 	
 	// 생성자
 	public CriteriaVO() {
-		this(1,5);
+		this(1,10);
 	}
-	public CriteriaVO(int pageNum, int amount) {
+	public CriteriaVO(int pageNum, int amount) {// 각각 page, 10이 들어갈 것
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
