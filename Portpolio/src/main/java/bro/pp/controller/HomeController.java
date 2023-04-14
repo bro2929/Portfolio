@@ -46,7 +46,7 @@ public class HomeController {
 		return "elements";
 	}
 	
-	@RequestMapping(value = "/SignInUp", method = RequestMethod.GET)
+	@RequestMapping(value = "/signInUp", method = RequestMethod.GET)
 	public String signUp1() {
 		return "signInUp";
 	}

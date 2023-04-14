@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
     <link rel="stylesheet" href="../resources/css/board.css">
+   	<script type="text/javascript" src="/resources/js/uploadAjax.js"></script>
+   	<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 </head>
 <body>
 
@@ -38,7 +40,7 @@
                     </dl>
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력" name="bod_CONTENT">
+                    <textarea placeholder="내용 입력" name="bod_CONTENT" id="content_area">
 ${detail.bod_CONTENT}
 					</textarea>
                 </div>
@@ -51,4 +53,13 @@ ${detail.bod_CONTENT}
     </div>
 </form>    
 </body>
+
+<script type="text/javascript">
+	ClassicEditor
+	.create(document.querySelector('#content_area'))
+	.catch(error=>{
+		console.error(error);
+	}); 
+</script>
+
 </html>

@@ -30,7 +30,7 @@
                 <div class="info">
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="글쓴이 입력"></dd>
+                        <dd><input type="hidden" name="bod_ID" value="${login.mem_ID}">${login.mem_ID}</dd>
                     </dl>
                     <dl>
                         <dt>비밀번호</dt>

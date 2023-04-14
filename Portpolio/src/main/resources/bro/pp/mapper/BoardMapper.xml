@@ -7,8 +7,8 @@
 <mapper namespace="bro.pp.mapper.BoardMapper">
   	
 	<insert id="boardWrite">
-		INSERT into portfolio_board(bod_TITLE, bod_CONTENT) 
-		VALUES(#{bod_TITLE}, #{bod_CONTENT});
+		INSERT into portfolio_board(bod_TITLE, bod_CONTENT, bod_ID) 
+		VALUES(#{bod_TITLE}, #{bod_CONTENT}, #{bod_ID});
 	</insert>
 
 	<select id="boardList" resultType="bro.pp.model.BoardVO">

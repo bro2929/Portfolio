@@ -20,4 +20,6 @@ public interface BoardService {
 	public void boardEdit2(BoardVO board);
 	// 게시판 글 삭제
 	public void boardDelete(BoardVO board);
+	
+	
 }

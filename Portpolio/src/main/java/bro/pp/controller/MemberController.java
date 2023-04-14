@@ -1,6 +1,7 @@
 
 package bro.pp.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 // 코드 숨겨져있음
 import bro.pp.model.LoginVO;
@@ -39,5 +40,14 @@ public class MemberController {
 			}
 	};
 	
+	// 로그아웃
+	@RequestMapping(value = "/logOut", method = RequestMethod.GET)
+	public String logOut(HttpServletRequest request) {
+	    HttpSession session = request.getSession(false);
+	    if (session != null) {
+	        session.invalidate();
+	    }
+	    return "index";
+	}
 	
 }

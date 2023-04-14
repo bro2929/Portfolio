@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE HTML>
+<!-- c:if 액션태그로 -->
+
 <!--
 	Spectral by HTML5 UP
 	html5up.net | @ajlkn
@@ -15,6 +18,23 @@
 		<link rel="stylesheet" href="resources/css/main.css" />
 		<noscript><link rel="stylesheet" href="resources/css/noscript.css" /></noscript>
 		<script src="https://kit.fontawesome.com/0f537ad086.js" crossorigin="anonymous"></script>
+		<style>
+		    @keyframes fadeInUp {
+		        0% {
+		            opacity: 0;
+		            transform: translate3d(0, 100%, 0);
+		        }
+		        to {
+		            opacity: 1;
+		            transform: translateZ(0);
+		        }
+		    }
+		 
+		    #icon_heart {
+		        position: relative;
+		        animation: fadeInUp 1s;
+		    }
+	</style>
 	</head>
 	<body class="landing is-preload">
 
@@ -33,7 +53,14 @@
 											<li><a href="/">Home</a></li>
 											<li><a href="/1">Generic</a></li>
 											<li><a href="/2">Elements</a></li>
-											<li><a href="/SignInUp">Sign In/Up</a></li>
+											<!-- 로그인X (session이 null값) -->
+											<c:if test="${login == null}">
+												<li><a href="/signInUp">Sign In/Up</a></li>
+											</c:if>
+											<!-- 로그인O (session이 null값이 아님) -->
+											<c:if test="${login != null}">
+												<li><a href="/logOut" onclick="logOut()">Sign Out</a></li>
+											</c:if>
 											<li><a href="/board/list">게시판</a></li>
 										</ul>
 									</div>
@@ -49,9 +76,10 @@
 							<p>안녕하세요, 웹 개발자 장희영입니다.<br />
 							Welcome to my portfolio page!<br />
 							<a href="http://html5up.net">스카우트 문의 환영♡</a></p>
-							<ul class="actions special">
-								<li><a href="#" class="button primary">♡ +999</a></li>
+							<ul class="actions special" onclick="iconShow(true)">
+								<li><a href="#" class="button primary">♡ +999<input type="hidden" name="" value=""></a></li>
 							</ul>
+							<img src="resources/image/heart.png" id="icon_heart" style="display:none;"/>
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>
 					</section>
@@ -236,6 +264,19 @@
 			<script src="resources/js/breakpoints.min.js"></script>
 			<script src="resources/js/util.js"></script>
 			<script src="resources/js/main.js"></script>
-
+			
+			<script>
+				function logOut(){
+				    alert("로그아웃 되었습니다.");
+				}
+				function iconShow(a){
+					const img1 = document.getElementById('icon_heart');
+					if(a){
+						img1.style.display = 'block';
+					}
+					img1.style.display = 'none';
+				}
+			</script>
+			
 	</body>
 </html>
